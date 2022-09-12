@@ -19,7 +19,7 @@ db.authenticate().then(()=>{  //Testando conexão com o banco de dados
 });
 
 db.sync().then(()=>{   //Sincronizando o banco com possíveis mudanças nas tabelas
-    console.log('sucesso');
+    console.log('db is sync');
 });
 
 app.use('/', route);
