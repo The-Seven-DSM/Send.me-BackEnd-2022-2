@@ -11,4 +11,8 @@ route.get('/get/associates',
     AssociateController.getAll
 );
 
+route.get('/get/associate/:id',
+    AssociateController.getById
+);
+
 export default route;

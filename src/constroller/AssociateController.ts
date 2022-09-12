@@ -22,6 +22,16 @@ export class AssociateController{
             return res.json({msg: "Fail to get all users", status: 500, route: '/get/associates'})
         }
    };
+
+   async getById(req:Request, res: Response){
+        try{
+            const {id} = req.params;
+            const userId = await Associate.findOne({where: {id}});
+            return res.json(userId);
+        }catch(e){
+            return res.json({msg: "Fail to bring user by id", status: 500, route: '/get/associate/:id'});
+        }
+    };
 };
 
 export default new AssociateController();
