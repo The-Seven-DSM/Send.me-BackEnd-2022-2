@@ -4,9 +4,9 @@
   "description": "Back-end",
   "main": "SendMeApp.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn src/PublicationsApp.ts",
+    "dev": "ts-node-dev --respawn src/SendMeApp.ts",
     "build": "tsc",
-    "start": "node dist/src/PublicationsApp.js"
+    "start": "node dist/src/SendMeApp.js"
   },
   "repository": {
     "type": "git",
