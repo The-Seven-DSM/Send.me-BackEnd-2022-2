@@ -14,3 +14,5 @@ export class AssociateController{
         }
    };
 };
+
+export default new AssociateController();
