@@ -13,6 +13,15 @@ export class AssociateController{
             return res.json({msg: "Fail to create user", status: 500, route: '/create/associate'});
         }
    };
+
+   async getAll(req:Request, res:Response){
+        try{
+            const getUsers = await Associate.findAll();
+            return res.json(getUsers);
+        }catch(e){
+            return res.json({msg: "Fail to get all users", status: 500, route: '/get/associates'})
+        }
+   };
 };
 
 export default new AssociateController();
