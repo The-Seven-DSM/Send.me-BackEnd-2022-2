@@ -2,9 +2,11 @@
   "name": "send.me-backend-2022-2",
   "version": "1.0.0",
   "description": "Back-end",
-  "main": "index.js",
+  "main": "SendMeApp.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node-dev --respawn src/PublicationsApp.ts",
+    "build": "tsc",
+    "start": "node dist/src/PublicationsApp.js"
   },
   "repository": {
     "type": "git",
