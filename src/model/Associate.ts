@@ -1,25 +1,18 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/Database.config";
-
-interface AssociateColumns{
-    id:string;
-    name:string;
-    email:string;
-    sex:string;
-};
-
 export class Associate extends Model{};
 
 Associate.init(
     {
-        id:{
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+        id_associado:{
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true,
-            allowNull: false
+            allowNull: false,
+            onDelete: 'CASCADE',
         },
 
-        name:{
+        nome:{
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -28,15 +21,15 @@ Associate.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-
-        sex: {
+        sexo: {
             type: DataTypes.STRING,
             allowNull: false
         }
     },
     {
+        timestamps: false,
         sequelize: db,
-        modelName: 'Associates',
-        tableName: 'Associates'
+        modelName: 'associado',
+        tableName: 'associado'
     }
 );

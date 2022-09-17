@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('send.medb', 'username', 'password',{
+const db = new Sequelize('API_a', 'root', 'admin',{
     host: 'localhost',
     dialect:'mysql'
 });

@@ -1,16 +1,16 @@
-import express from "express";
-import db from "./config/Database.config";
-import route from "./routes/Routes"
+const cors = require('cors')
+const express = require('express')
+const app = express()
+import db from "./src/config/Database.config";
+import route from "./src/routes/routes";
+const port = 3001;
 
-const app = express();
-
+app.use(cors())
 app.use(express.json());
-
-const port = 3000;
-
 app.listen(port, ()=>{
     console.log("server is running on port " + port);
 });
+
 
 db.authenticate().then(()=>{  //Testando conexão com o banco de dados
     console.log("connected to database");

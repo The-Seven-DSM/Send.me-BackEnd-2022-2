@@ -3,22 +3,21 @@ import { body, param } from "express-validator";
 class AssociatesValidator{
     associateBodyValidation(){
         return[
-            body("id").optional().isUUID(4).withMessage("Id value must be a valid UUID V4"),
+            // body("id").notEmpty().withMessage("Id value must be a valid number"),
             
-            body("name").notEmpty().withMessage("Name field must have a valid value"),
+            body("nome").notEmpty().withMessage("Name field must have a valid value"),
 
             body("email").notEmpty().withMessage("Email field must have a valid value"),
 
-            body("sex").notEmpty().withMessage("Sex field must have a valid value")
+            body("sexo").notEmpty().withMessage("Sex field must have a valid value")
         ]
     };
-
-    associateIdValidation(){
-        return [
-            param("id").notEmpty().withMessage("Id value must not be empty").isUUID(4)
-            .withMessage("The id value must be a valid UUIDV4 id")
-        ]
-    };
+    
+    // associateIdValidation(){
+    //     return [
+    //         param("id").notEmpty().withMessage("Id value must not be empty")
+    //     ]
+    // };
 };
 
 export default new AssociatesValidator();
