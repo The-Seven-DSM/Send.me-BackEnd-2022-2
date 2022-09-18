@@ -36,7 +36,7 @@ route.get('/get/email/:id',
  
 route.post('/send',
     EmailsController.updateEnvio,
-    // EmailsController.sendmail
+    EmailsController.sendmail
 )
 route.post('/send/direto',
     EmailsController.Enviodireto
