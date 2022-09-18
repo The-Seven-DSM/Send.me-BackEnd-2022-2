@@ -1,7 +1,6 @@
 import express from "express";
 import AssociateController from "../constroller/AssociateController";
 import EmailsController from "../constroller/EmailsController";
-import { Emails } from "../model/Emails";
 import AssociatesValidator from "../services/AssociatesValidator";
 import ErrorAnalysis from "../services/ErrorAnalysis";
 const route = express.Router();

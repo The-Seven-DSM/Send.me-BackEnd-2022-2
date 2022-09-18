@@ -26,10 +26,6 @@ Emails.init(
             type: DataTypes.BOOLEAN,
             allowNull: false
         }
-        // dataenvio: {
-        //     type: DataTypes.DATE,
-        //     allowNull: false
-        // },
     },
     {
         timestamps: false,

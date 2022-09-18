@@ -21,7 +21,7 @@ Associate.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        sexo: {
+        genero: {
             type: DataTypes.STRING,
             allowNull: false
         }
