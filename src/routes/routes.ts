@@ -35,7 +35,7 @@ route.get('/get/email/:id',
 );
 
 route.post('/send',
-AssociateController.sendmail
+    EmailsController.sendmail
 )
 
 export default route;
