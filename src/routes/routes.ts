@@ -33,9 +33,16 @@ route.get('/get/email/:id',
     ErrorAnalysis.lookingForErros,
     EmailsController.getById
 );
-
+ 
 route.post('/send',
-    EmailsController.sendmail
+    EmailsController.updateEnvio,
+    // EmailsController.sendmail
+)
+route.post('/send/direto',
+    EmailsController.Enviodireto
+)
+route.post('/validar',
+    EmailsController.validar
 )
 
 export default route;

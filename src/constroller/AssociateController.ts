@@ -32,6 +32,8 @@ export class AssociateController{
             return res.json({msg: "Fail to bring user by id", status: 500, route: '/get/associate/:id'});
         }
     };
+
+    
     
 };
 

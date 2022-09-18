@@ -5,6 +5,22 @@ import db from "./src/config/Database.config";
 import route from "./src/routes/routes";
 const port = 3001;
 
+const { spawn } = require("child_process");
+const childPython = spawn('python', ['app.py']);
+
+childPython.stdout.on('data', (data:any) => {
+    console.log(`saídas: ${data}`);
+});
+
+childPython.stderr.on('data', (data:any) => {
+    console.error(`erro: ${data}`);
+});
+
+
+childPython.on('close', (code:any) => {
+    console.log(`código: ${code}`);
+});
+
 app.use(cors())
 app.use(express.json());
 app.listen(port, ()=>{
