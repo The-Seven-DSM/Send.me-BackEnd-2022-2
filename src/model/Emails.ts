@@ -36,3 +36,4 @@ Emails.init(
 );
 
 Emails.belongsTo(Associate,{foreignKey: 'fk_id_associado'});
+Associate.hasMany(Emails,{foreignKey: 'fk_id_associado'});
