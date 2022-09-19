@@ -5,6 +5,7 @@ import AssociatesValidator from "../services/AssociatesValidator";
 import ErrorAnalysis from "../services/ErrorAnalysis";
 const route = express.Router();
 
+
 route.post('/create/associate',
     AssociatesValidator.associateBodyValidation(),
     ErrorAnalysis.lookingForErros,
@@ -34,11 +35,12 @@ route.get('/get/email/:id',
 );
  
 route.post('/send',
-    EmailsController.updateEnvio,
-    EmailsController.sendmail
+    EmailsController.sendmail,
+    // EmailsController.updateEnvio,
 )
 route.post('/send/direto',
-    EmailsController.Enviodireto
+    EmailsController.Enviodireto,
+    // EmailsController.sendmail
 )
 route.post('/validar',
     EmailsController.validar
