@@ -23,6 +23,9 @@ Com o [Node](https://nodejs.org/en/) instalado em sua máquina, utilize estes co
 # Baixe ou clone este repositório
 $ git clone https://github.com/The-Seven-DSM/Send.me-BackEnd-2022-2.git
 
+# Já dentro do projeto, localize o arquivo Database.config.ts dentro da pasta config 
+# Na linha 3 altere o campo "root" e "admin" para suas credenciais do MySQL
+
 # Acesse a pasta e inicie o projeto
 $ cd Send.me-BackEnd-2022-2
 $ yarn install
