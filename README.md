@@ -8,14 +8,14 @@
 
 ### :mag: Sobre
 
-Este repositório é referente ao backend da aplicação, onde nele está presente os recuros referentes ao:
+Este repositório é referente ao BackEnd da aplicação, onde nele está presente os recuros referentes ao:
 
 - **CRUD**: Quatro operações básicas utilizadas em bases de dados relacionais fornecidas aos utilizadores do sistema 
 - **Envio dos emails**: Envio de emails personalizados aos associados
 
 ### :gear: Como utilizar
 
-Para utilizar rodar localmente o front-end da aplicação siga o passo a passo abaixo:
+Para utilizar rodar apenas o BackEnd da aplicação siga o passo a passo abaixo:
 
 Com o [Node](https://nodejs.org/en/) instalado em sua máquina, utilize estes comandos em um terminal:
 
@@ -29,4 +29,5 @@ $ yarn install
 $ yarn start
 ```
 
-Esses comandos irá iniciar o backend da aplicação. Caso queira rodar a aplicação por completo baixe os repositórios FrontEnd e Bot e siga suas intruções.
+Esses comandos irá iniciar o BackEnd da aplicação. Caso queira rodar a aplicação por completo baixe os repositórios [Bot](https://github.com/The-Seven-DSM/Send.me-Bot-2022-2) e [FrontEnd](https://github.com/The-Seven-DSM/Send.me-FrontEnd-2022-2) e siga suas intruções.
+
