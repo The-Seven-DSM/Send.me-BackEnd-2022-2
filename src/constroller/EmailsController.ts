@@ -12,6 +12,9 @@ export class EmailsController {
             return res.json({ msg: "Fail to get all users", status: 500, route: '/get/emails' })
         }
     };
+
+   
+
     async getById(req: Request, res: Response) {
         try {
             const { id } = req.params;
@@ -22,8 +25,15 @@ export class EmailsController {
         }
     };
     async validar(req: Request, res: Response) {
-        var { id_email, corpo } = req.body;
+        const corpoCerto: string[] = []
+        var { id_email, corpo, corpo2 } = req.body;
         try {
+            if (typeof corpo == 'undefined') {
+                corpoCerto.push(corpo2)
+            }
+            else{
+                corpoCerto.push(corpo)
+            }
             await Emails.update({ estado: true, corpo: corpo }, {
                 where: {
                     id_email: id_email
@@ -37,9 +47,18 @@ export class EmailsController {
 
     };
     async Enviodireto(req: Request, res: Response) {
-        
+        const corpoCerto: string[] = []
+       
         try {
-            const { id_email, nome, email, fk_id_associado , corpo } = req.body;
+            const { id_email, nome, email, fk_id_associado , corpo , corpo2 } = req.body;
+            console.log(corpo, corpo2);
+            if (typeof corpo == 'undefined') {
+                corpoCerto.push(corpo2)
+            }
+            else{
+                corpoCerto.push(corpo)
+            }
+
             await Emails.update({ envio: true, estado: true, corpo: corpo }, {
                 where: {
                     id_email: id_email
@@ -59,7 +78,7 @@ export class EmailsController {
                 from: `${nome}<sendmeapifatec@gmail.com>`,
                 to: `sendmeapifatec@gmail.com`,
                 subject: 'Aviso Diário - Send.me',
-                text: `${corpo}`
+                text: `Corpo:${corpoCerto[0]}      Email:${email}`
             })
             } catch (e) {
                 return res.json(e)

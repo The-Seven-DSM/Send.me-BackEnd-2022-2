@@ -1,3 +1,4 @@
+import { Emails } from '../model/Emails';
 import { Associate } from '../model/Associate';
 import {Request, Response} from 'express';
 
@@ -13,7 +14,7 @@ export class AssociateController{
             return res.json({msg: "Fail to create user", status: 500, route: '/create/associate'});
         }
    };
-
+ 
    async getAll(req:Request, res:Response){
         try{
             const getUsers = await Associate.findAll();
@@ -22,6 +23,16 @@ export class AssociateController{
             return res.json({msg: "Fail to get all users", status: 500, route: '/get/associates'})
         }
    };
+ 
+   async get(req: Request, res: Response) {
+    try {
+        const { nome } = req.params;
+        const getEmails = await Associate.findAll({ where: { nome: nome }, include: Emails });
+        return res.json(getEmails);
+    } catch (e) {
+        return res.json({ msg: "Fail to get all users", status: 500, route: '/get/emails' })
+    }
+};
 
    async getById(req:Request, res: Response){
         try{

@@ -33,6 +33,10 @@ route.get('/get/email/:id',
     ErrorAnalysis.lookingForErros,
     EmailsController.getById
 );
+
+route.get('/perfil:nome',
+    AssociateController.get
+)
  
 route.post('/send',
     EmailsController.sendmail,
