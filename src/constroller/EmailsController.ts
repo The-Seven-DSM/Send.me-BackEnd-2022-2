@@ -142,7 +142,7 @@ export class EmailsController {
                     text: `${corpo2}${email2}`,
                 }).then(() => res.send('email enviado com sucesso'))
             } else {
-                for (let i = 0; i <= nome2.length; i++) {
+                for (let i = 0; i < nome2.length; i++) {
                     transporter.sendMail({
                         from: `${nome2[i]}<sendmeapifatec@gmail.com>`,
                         to: `sendmeapifatec@gmail.com`,
