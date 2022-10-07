@@ -24,7 +24,20 @@ Associate.init(
         genero: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        cpf: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        rg: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        datanascimento: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
+        
     },
     {
         timestamps: false,

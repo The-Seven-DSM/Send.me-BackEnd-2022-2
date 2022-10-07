@@ -50,4 +50,8 @@ route.post('/validar',
     EmailsController.validar
 )
 
+route.post('/delete/:id',
+    AssociateController.delete
+)
+
 export default route;
