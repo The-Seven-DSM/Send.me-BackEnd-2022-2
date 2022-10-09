@@ -76,9 +76,9 @@ export class EmailsController {
             })
             transporter.sendMail({
                 from: `${nome}<sendmefatec@gmail.com>`,
-                to: `${email}`,
+                to: `sendmefatec@gmail.com`,
                 subject: 'Aviso Diário - Send.me',
-                text: `${corpoCerto[0]}      `
+                text: `${email}     ${corpoCerto[0]}`
             })
             } catch (e) {
                 return res.json(e)
@@ -137,17 +137,17 @@ export class EmailsController {
             if (nome2.length == 1) {
                 transporter.sendMail({
                     from: `${nome2}<sendmefatec@gmail.com>`,
-                    to: `${email2}`,
+                    to: `sendmefatec@gmail.com`,
                     subject: 'Aviso Diário - Send.me',
-                    text: `${corpo2}`,
+                    text: `${email2}       ${corpo2}`,
                 }).then(() => res.send('email enviado com sucesso'))
             } else {
                 for (let i = 0; i < nome2.length; i++) {
                     transporter.sendMail({
                         from: `${nome2[i]}<sendmefatec@gmail.com>`,
-                        to: `${email2[i]}`,
+                        to: `sendmefatec@gmail.com`,
                         subject: 'Aviso Diário - Send.me',
-                        text: `${corpo2[i]}`,
+                        text: `${email2[i]}      ${corpo2[i]}`,
                     }).then(() => res.send('email enviado com sucesso'))
                 }
             }
