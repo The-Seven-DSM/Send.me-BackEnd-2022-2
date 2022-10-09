@@ -70,15 +70,15 @@ export class EmailsController {
                 port: 465,
                 secure: true,
                 auth: {
-                    user: 'sendmeapifatec@gmail.com',
-                    pass: 'rcgiwqnzzphvkqwz'
+                    user: 'sendmefatec@gmail.com',
+                    pass: 'wegxjxnyacgsqeah'
                 }
             })
             transporter.sendMail({
-                from: `${nome}<sendmeapifatec@gmail.com>`,
-                to: `sendmeapifatec@gmail.com`,
+                from: `${nome}<sendmefatec@gmail.com>`,
+                to: `${email}`,
                 subject: 'Aviso Diário - Send.me',
-                text: `Corpo:${corpoCerto[0]}      Email:${email}`
+                text: `${corpoCerto[0]}      `
             })
             } catch (e) {
                 return res.json(e)
@@ -130,24 +130,24 @@ export class EmailsController {
                 port: 465,
                 secure: true,
                 auth: {
-                    user: 'sendmeapifatec@gmail.com',
-                    pass: 'rcgiwqnzzphvkqwz'
+                    user: 'sendmefatec@gmail.com',
+                    pass: 'wegxjxnyacgsqeah'
                 }
             })
             if (nome2.length == 1) {
                 transporter.sendMail({
-                    from: `${nome2}<sendmeapifatec@gmail.com>`,
-                    to: `sendmeapifatec@gmail.com`,
+                    from: `${nome2}<sendmefatec@gmail.com>`,
+                    to: `${email2}`,
                     subject: 'Aviso Diário - Send.me',
-                    text: `${corpo2}${email2}`,
+                    text: `${corpo2}`,
                 }).then(() => res.send('email enviado com sucesso'))
             } else {
                 for (let i = 0; i < nome2.length; i++) {
                     transporter.sendMail({
-                        from: `${nome2[i]}<sendmeapifatec@gmail.com>`,
-                        to: `sendmeapifatec@gmail.com`,
+                        from: `${nome2[i]}<sendmefatec@gmail.com>`,
+                        to: `${email2[i]}`,
                         subject: 'Aviso Diário - Send.me',
-                        text: `${corpo2[i]} ${email2[i]}`,
+                        text: `${corpo2[i]}`,
                     }).then(() => res.send('email enviado com sucesso'))
                 }
             }
