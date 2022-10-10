@@ -3,8 +3,10 @@ import AssociateController from "../constroller/AssociateController";
 import EmailsController from "../constroller/EmailsController";
 import AssociatesValidator from "../services/AssociatesValidator";
 import ErrorAnalysis from "../services/ErrorAnalysis";
+import BackofficeController from "../constroller/BackofficeController";
 const route = express.Router();
 
+route.post('/auth', BackofficeController.auth);
 
 route.post('/create/associate',
     AssociatesValidator.associateBodyValidation(),
