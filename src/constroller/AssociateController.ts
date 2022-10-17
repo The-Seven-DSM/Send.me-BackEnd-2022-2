@@ -1,64 +1,73 @@
-import { Emails } from '../model/Emails';
-import { Associate } from '../model/Associate';
-import { Request, Response } from 'express';
-
+import { Emails } from "../model/Emails";
+import { Associate } from "../model/Associate";
+import { Request, Response } from "express";
 
 export class AssociateController {
+  async create(req: Request, res: Response) {
+    try {
+      const newAssociate = await Associate.create({ ...req.body });
+      return res.json(newAssociate);
+    } catch (e) {
+      return res.status(500).json({ error: "Cannot create associate" });
+    }
+  }
 
-    async create(req: Request, res: Response) {
+  async getAll(req: Request, res: Response) {
+    try {
+      const associates = await Associate.findAll();
+      return res.json(associates);
+    } catch (e) {
+      return res.status(500).json({ error: "Cannot get all associates" });
+    }
+  }
 
-        try {
-            const createUser = await Associate.create({ ...req.body });
-            return res.json(createUser);
-        } catch (e) {
-            return res.json({ msg: "Fail to create user", status: 500, route: '/create/associate' });
-        }
-    };
+  async getById(req: Request, res: Response) {
+    const { id } = req.params;
 
-    async getAll(req: Request, res: Response) {
-        try {
-            const getUsers = await Associate.findAll();
-            return res.json(getUsers);
-        } catch (e) {
-            return res.json({ msg: "Fail to get all users", status: 500, route: '/get/associates' })
-        }
-    };
+    try {
+      const associate = await Associate.findOne({
+        where: { id_associado: id },
+      });
+      return res.json(associate);
+    } catch (e) {
+      return res.status(500).json({ error: "Associate not found" });
+    }
+  }
 
-    async get(req: Request, res: Response) {
-        try {
-            const { nome } = req.params;
-            const getEmails = await Associate.findAll({ where: { nome: nome }, include: Emails });
-            return res.json(getEmails);
-        } catch (e) {
-            return res.json({ msg: "Fail to get all users", status: 500, route: '/get/emails' })
-        }
-    };
+  async getEmailsByAssociateName(req: Request, res: Response) {
+    const { name } = req.params;
 
-    async getById(req: Request, res: Response) {
-        try {
-            const { id } = req.params;
-            const userId = await Associate.findOne({ where: { id_associado: id } });
-            return res.json(userId);
-        } catch (e) {
-            return res.json({ msg: "Fail to bring user by id", status: 500, route: '/get/associate/:id' });
-        }
-    };
-    async delete(req: Request, res: Response){
-        try{
-            const {id} = req.params;
-            const userToBeDeleted = await Associate.findOne({where: {id_associado: id}});
-            if(!userToBeDeleted){
-                return res.json("This user id doesn't exist!");
-            }
-            const deletedUser = await userToBeDeleted.destroy()
-            return res.json({userToBeDeleted: deletedUser, msg: "User sucessfully deleted"});
-        }catch(e){
-            res.json({msg: "Fail to delete user", status: 500, route: '/delete/associate/:id'});
-        }
-       }
+    try {
+      const emails = await Associate.findAll({
+        where: { nome: name },
+        include: Emails,
+      });
+      return res.json(emails);
+    } catch (e) {
+      return res
+        .status(500)
+        .json({ error: "Cannot get emails by associate name" });
+    }
+  }
 
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
 
+    try {
+      const userToBeDeleted = await Associate.findOne({
+        where: { id_associado: id },
+      });
 
-};
+      if (!userToBeDeleted) {
+        return res.status(404).json({ error: "Associate not found" });
+      }
+
+      await userToBeDeleted.destroy();
+      return res.sendStatus(204);
+    } catch (e) {
+      return res.status(500).json({ error: "Cannot delete associate" });
+    }
+  }
+}
 
 export default new AssociateController();

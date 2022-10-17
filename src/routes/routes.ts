@@ -1,59 +1,47 @@
 import express from "express";
+
 import AssociateController from "../constroller/AssociateController";
+import BackofficeController from "../constroller/BackofficeController";
 import EmailsController from "../constroller/EmailsController";
 import AssociatesValidator from "../services/AssociatesValidator";
 import ErrorAnalysis from "../services/ErrorAnalysis";
-import BackofficeController from "../constroller/BackofficeController";
+
 const route = express.Router();
 
-route.post('/auth', BackofficeController.auth);
+route.post("/auth", BackofficeController.auth);
 
-route.post('/create/associate',
-    AssociatesValidator.associateBodyValidation(),
-    ErrorAnalysis.lookingForErros,
-    AssociateController.create
+route.get(
+  "/associates",
+  ErrorAnalysis.lookingForErros,
+  AssociateController.getAll
+);
+route.get(
+  "/associate/:id",
+  ErrorAnalysis.lookingForErros,
+  AssociateController.getById
+);
+route.post(
+  "/associate",
+  AssociatesValidator.associateBodyValidation(),
+  ErrorAnalysis.lookingForErros,
+  AssociateController.create
+);
+route.delete("/associate/:id", AssociateController.delete);
+
+route.get("/emails", ErrorAnalysis.lookingForErros, EmailsController.getAll);
+route.get(
+  "/email/:id",
+  ErrorAnalysis.lookingForErros,
+  EmailsController.getById
 );
 
-route.get('/get/associates',
-    ErrorAnalysis.lookingForErros,
-    AssociateController.getAll
+route.get(
+  "/emailsByAssociateName/:nome",
+  AssociateController.getEmailsByAssociateName
 );
 
-route.get('/get/emails',
-    ErrorAnalysis.lookingForErros,
-    EmailsController.getAll
-);
-
-route.get('/get/associate/:id',
-    // AssociatesValidator.associateIdValidation(),
-    ErrorAnalysis.lookingForErros,
-    AssociateController.getById
-);
-
-route.get('/get/email/:id',
-    // AssociatesValidator.associateIdValidation(),
-    ErrorAnalysis.lookingForErros,
-    EmailsController.getById
-);
-
-route.get('/perfil:nome',
-    AssociateController.get
-)
- 
-route.post('/send',
-    EmailsController.sendmail,
-    // EmailsController.updateEnvio,
-)
-route.post('/send/direto',
-    EmailsController.Enviodireto,
-    // EmailsController.sendmail
-)
-route.post('/validar',
-    EmailsController.validar
-)
-
-route.post('/delete/:id',
-    AssociateController.delete
-)
+route.post("/sendEmail", EmailsController.sendEmail);
+route.post("/sendEmails", EmailsController.sendEmails);
+route.post("/validateEmail", EmailsController.validate);
 
 export default route;
