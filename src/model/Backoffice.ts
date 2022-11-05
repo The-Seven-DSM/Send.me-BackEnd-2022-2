@@ -23,6 +23,22 @@ Backoffice.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        cpf:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        telefone:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        datanascimento:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        escola:{
+            type: DataTypes.STRING,
+            allowNull: false
+        }
         
     },
     {

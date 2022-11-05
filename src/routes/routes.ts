@@ -13,6 +13,10 @@ route.post('/create/associate',
     ErrorAnalysis.lookingForErros,
     AssociateController.create
 );
+route.post('/create/backoffice',
+    ErrorAnalysis.lookingForErros,
+    BackofficeController.create
+);
 
 route.get('/get/associates',
     ErrorAnalysis.lookingForErros,
