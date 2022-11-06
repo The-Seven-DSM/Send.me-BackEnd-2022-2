@@ -36,8 +36,12 @@ Associate.init(
         datanascimento: {
             type: DataTypes.STRING,
             allowNull: false
-        }
-        
+        },
+        escola: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+         
     },
     {
         timestamps: false,

@@ -35,10 +35,6 @@ Backoffice.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        escola:{
-            type: DataTypes.STRING,
-            allowNull: false
-        }
         
     },
     {
