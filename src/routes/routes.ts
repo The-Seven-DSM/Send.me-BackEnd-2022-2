@@ -36,8 +36,8 @@ route.get(
 );
 
 route.get(
-  "/emailsByAssociateName/:nome",
-  AssociateController.getEmailsByAssociateName
+  "/emailsByAssociateID/:Id",
+  AssociateController.getEmailsByAssociateID
 );
 
 route.post("/sendEmail", EmailsController.sendEmail);

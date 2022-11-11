@@ -27,14 +27,24 @@ export class EmailsController {
   }
 
   async validate(req: Request, res: Response) {
-    var { id_email, corpo } = req.body;
+    const corpoCerto: string[] = []
+    var { Email_id, texto, values} = req.body;
 
     try {
+      console.log(Email_id,'Texto');
+      console.log(typeof(values),'Values');
+      
+      if (typeof values == 'undefined') {
+        corpoCerto.push(texto)
+    }
+    else{
+        corpoCerto.push(values)
+    }
       await Emails.update(
-        { estado: true, corpo },
+        { estado: true, corpo: corpoCerto.toString() },
         {
           where: {
-            id_email: id_email,
+            id_email: Email_id,
           },
         }
       );

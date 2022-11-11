@@ -34,13 +34,13 @@ export class AssociateController {
     }
   }
 
-  async getEmailsByAssociateName(req: Request, res: Response) {
-    const { name } = req.params;
-
+  async getEmailsByAssociateID(req: Request, res: Response) {
+    const id = req.params.Id;
+    console.log(id);
+    
     try {
-      const emails = await Associate.findAll({
-        where: { nome: name },
-        include: Emails,
+      const emails = await Emails.findAll({
+        where: { id_email: id },
       });
       return res.json(emails);
     } catch (e) {
