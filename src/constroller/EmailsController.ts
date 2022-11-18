@@ -58,9 +58,15 @@ export class EmailsController {
   async sendEmail(req: Request, res: Response) {
     const { id_email, nome, email, corpo, corpo2 } = req.body;
 
-    const emailBody = corpo ?? corpo2;
+    const emailBody : string[] = []
 
     try {
+      if (typeof corpo2 == 'undefined') {
+        emailBody.push(corpo)
+    }
+    else{
+        emailBody.push(corpo2)
+    }
       await Emails.update(
         { envio: true, estado: true, corpo: corpo },
         {
