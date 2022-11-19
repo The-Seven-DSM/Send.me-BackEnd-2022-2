@@ -29,6 +29,7 @@ route.post(
 route.delete("/associate/:id", AssociateController.delete);
 
 route.get("/emails", ErrorAnalysis.lookingForErros, EmailsController.getAll);
+
 route.get(
   "/email/:id",
   ErrorAnalysis.lookingForErros,
