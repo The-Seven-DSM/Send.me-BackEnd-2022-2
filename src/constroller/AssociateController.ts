@@ -35,12 +35,13 @@ export class AssociateController {
   }
 
   async getEmailsByAssociateID(req: Request, res: Response) {
-    const id = req.params.Id;
-    console.log(id);
+    const fk = req.params.Id;
+    console.log(fk);
     
     try {
-      const emails = await Emails.findAll({
-        where: { id_email: id },
+      const emails = await Associate.findOne({
+        where: { id_associado: fk },
+        include: [ Emails ]
       });
       return res.json(emails);
     } catch (e) {
