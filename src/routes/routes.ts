@@ -26,6 +26,11 @@ route.post(
   ErrorAnalysis.lookingForErros,
   AssociateController.create
 );
+route.post(
+  "/backoffice",
+  ErrorAnalysis.lookingForErros,
+  BackofficeController.create
+);
 route.delete("/associate/:id", AssociateController.delete);
 
 route.get("/emails", ErrorAnalysis.lookingForErros, EmailsController.getAll);

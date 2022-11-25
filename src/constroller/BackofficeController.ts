@@ -15,6 +15,16 @@ export class BackofficeController {
       return res.status(500).json({ error: "Cannot auth user" });
     }
   }
+
+  async create(req: Request, res: Response) {
+
+    try {
+        const createBackoffice = await Backoffice.create({ ...req.body });
+        return res.json(createBackoffice);
+    } catch (e) {
+        return res.json({ msg: "Fail to create Backoffice", status: 500, route: '/create/backoffice' });
+    }
+  };
 }
 
 export default new BackofficeController();
